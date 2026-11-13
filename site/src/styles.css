@@ -1,0 +1,90 @@
+/* Page frame: keeps content readable on very wide screens. */
+.page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+}
+
+/* Let controls keep their natural width and wrap instead of being squeezed. */
+.filter-row > * {
+  flex-shrink: 0;
+}
+
+/* One week card: subject name in a fixed column, topic next to it. */
+.week-topics {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 8px 20px;
+}
+
+.week-topic {
+  display: contents;
+}
+
+@media (max-width: 760px) {
+  .week-topics {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .week-topic {
+    display: block;
+    padding-block: 6px;
+    border-bottom: 1px solid var(--color-border, #e5e5e5);
+  }
+
+  .week-topic > *:first-child {
+    display: block;
+    margin-bottom: 2px;
+  }
+}
+
+/* Document view: article plus a sticky outline, like a notes app. */
+.doc-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 24px;
+  align-items: start;
+}
+
+.doc-outline {
+  position: sticky;
+  top: 16px;
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+}
+
+@media (max-width: 1180px) {
+  .doc-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .doc-outline {
+    display: none;
+  }
+}
+
+/* GitHub-flavoured Markdown, the same rendering Yank Note uses. */
+.markdown-body {
+  background: transparent;
+  font-size: 15px;
+}
+
+.markdown-body table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.markdown-body h2 {
+  scroll-margin-top: 16px;
+}
+
+.markdown-body h3 {
+  scroll-margin-top: 16px;
+}
+
+.week-anchor {
+  scroll-margin-top: 16px;
+}
